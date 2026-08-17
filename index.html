@@ -5,32 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#b9c8d2" />
     <title>月影温泉郷 — 黒影夜行</title>
-    <script type="module" crossorigin src="/japanese-city-vertical-slice/assets/index-DUlz9uNN.js"></script>
-    <link rel="stylesheet" crossorigin href="/japanese-city-vertical-slice/assets/index-CbOMh3MQ.css">
+    <script type="module" crossorigin src="/japanese-city-vertical-slice/assets/index-DhGY0vo2.js"></script>
+    <link rel="stylesheet" crossorigin href="/japanese-city-vertical-slice/assets/index-DZGZuA5G.css">
   </head>
   <body>
     <div id="app"></div>
     <div id="hud">
       <div class="place">大正十五年・月影温泉郷<br /><strong>黒影夜行</strong></div>
+      <div id="start-status"><small>開始門までは安全地帯</small><strong>門をくぐると START</strong></div>
       <button id="audio-toggle" type="button" aria-pressed="false">音声 OFF</button>
-      <div class="hint desktop-hint"><b>夜明けまで、生きて辿り着け</b><br />WASD 移動　マウス 視点　左クリック 射撃　Shift ダッシュ</div>
-      <div class="hint mobile-hint"><b>夜明けまで、生きて辿り着け</b><br />左スティック 移動　右側スワイプ 視点　FIRE 射撃</div>
+      <div class="hint desktop-hint"><b>夜明けまで、生きて辿り着け</b><br />WASD / 矢印キー 移動　左クリック 射撃　右クリック / E ガード　Shift ダッシュ</div>
+      <div class="hint mobile-hint"><b>夜明けまで、生きて辿り着け</b><br />左スティック 移動　右側スワイプ 視点　FIRE 射撃　GUARD 防御</div>
       <div id="combat-hud">
         <div id="objective-text">脱出地点まで 160m</div>
         <div class="health-row"><span>生命</span><div class="health-track"><i id="health-fill"></i></div><b id="health-text">100</b></div>
-        <div id="enemy-count">影 8/8</div>
+        <div class="guard-row"><span>防御</span><div class="guard-track"><i id="guard-fill"></i></div><b id="guard-text">100</b></div>
+        <div id="enemy-count">撃破 0</div>
       </div>
+      <div id="threat-radar" aria-label="攻撃している敵の方位"><span>交戦方位</span><i class="radar-player"></i></div>
       <div class="reticle" aria-hidden="true"></div>
       <div id="hitmarker" aria-hidden="true"></div>
       <div id="damage-vignette" aria-hidden="true"></div>
+      <div id="guard-vignette" aria-hidden="true"></div>
     </div>
-    <div id="game-state" role="dialog" aria-modal="true" aria-live="assertive">
+    <div id="game-state" role="dialog" aria-modal="true" aria-live="assertive" hidden>
       <div class="state-panel"><small>月影温泉郷</small><h1 id="state-title">闇に呑まれた</h1><p id="state-copy"></p><button id="restart-button" type="button">もう一度進む</button></div>
     </div>
     <div id="mobile-controls" aria-label="タッチ操作">
       <div id="move-zone" aria-label="移動スティック"><div id="joystick-knob"></div></div>
       <div id="look-zone" aria-label="視点操作エリア"><span>視点</span></div>
       <button id="dash-button" type="button">DASH</button>
+      <button id="guard-button" type="button">GUARD</button>
       <button id="fire-button" type="button">FIRE</button>
     </div>
   </body>
